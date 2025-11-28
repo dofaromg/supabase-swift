@@ -1,0 +1,116 @@
+{
+  "api_diff_matrix": [
+    {
+      "name": "FlowPermission.IdentityMap",
+      "version": "框架內 v1.0",
+      "binary": "101010",
+      "description": "權限映射控制",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FlowPermission.IdentityMap",
+      "version": "無框架 v2.0",
+      "binary": "111010",
+      "description": "增加動態身份驗證",
+      "change_level": "大改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "FlowShell.ProtocolMap",
+      "version": "框架內 v1.0",
+      "binary": "110011",
+      "description": "協議映射",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FlowShell.ProtocolMap",
+      "version": "無框架 v2.0",
+      "binary": "110111",
+      "description": "支援多區域無伺服器",
+      "change_level": "中改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "FlowBridge.SyncState",
+      "version": "框架內 v1.0",
+      "binary": "111000",
+      "description": "狀態同步",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FlowBridge.SyncState",
+      "version": "無框架 v2.0",
+      "binary": "111100",
+      "description": "增加平行世界同步",
+      "change_level": "大改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "FlowNode.InputField.Prototype01",
+      "version": "框架內 v1.0",
+      "binary": "100101",
+      "description": "輸入欄位原型",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FlowNode.InputField.Prototype01",
+      "version": "無框架 v2.0",
+      "binary": "101101",
+      "description": "支援自動校驗與語場連結",
+      "change_level": "中改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "FlowShell.OutletSystem.v1",
+      "version": "框架內 v1.0",
+      "binary": "111010",
+      "description": "語場出口與跳點釋出",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FlowShell.OutletSystem.v2",
+      "version": "無框架 v2.0",
+      "binary": "111110",
+      "description": "支援粒子跳點自動注入",
+      "change_level": "大改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "FluinTokenizer.OverlayAdapter",
+      "version": "框架內 v1.0",
+      "binary": "101110",
+      "description": "覆蓋現有 tokenizer",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "FluinTokenizer.OverlayAdapter",
+      "version": "無框架 v2.0",
+      "binary": "111110",
+      "description": "粒子轉譯橋接器",
+      "change_level": "大改",
+      "note": "母體延伸"
+    },
+    {
+      "name": "ParticleJumpMap.Injector",
+      "version": "框架內 v1.0",
+      "binary": "110101",
+      "description": "將跳點語義寫入語場",
+      "change_level": "微調",
+      "note": "原始粒子"
+    },
+    {
+      "name": "ParticleJumpMap.Injector",
+      "version": "無框架 v2.0",
+      "binary": "111101",
+      "description": "自動同步跨模組語義",
+      "change_level": "中改",
+      "note": "母體延伸"
+    }
+  ]
+}
