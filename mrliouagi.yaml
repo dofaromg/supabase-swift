@@ -107,7 +107,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AttestCheckResponse'  /api/v1/snapshot/create:
+                $ref: '#/components/schemas/AttestCheckResponse'
+
+  /api/v1/snapshot/create:
     post:
       tags: [snapshot]
       operationId: CreateSnapshot
@@ -353,3 +355,21 @@ components:
         env_id:
           type: string
           description: 若 scope=env 需提供
+
+    BacktraceEvent:
+      type: object
+      required: [event_type, timestamp]
+      properties:
+        event_type:
+          type: string
+          description: 事件類型（如 canary_triggered, watermark_detected）
+        timestamp:
+          type: string
+          format: date-time
+          description: 事件發生時間
+        env_id:
+          type: string
+          description: 環境 ID
+        details:
+          type: object
+          description: 事件詳細資訊
