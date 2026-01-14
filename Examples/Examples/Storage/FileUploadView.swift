@@ -349,8 +349,12 @@ struct DocumentPicker: UIViewControllerRepresentable {
         // Use the copied file URL
         parent.selectedURL = tempURL
 
-        print(
-          "Successfully selected file: \(fileName), size: \(try? tempURL.fileSize() ?? 0) bytes")
+        // Log file selection with size info
+        if let fileSize = try? tempURL.fileSize() {
+          print("Successfully selected file: \(fileName), size: \(fileSize) bytes")
+        } else {
+          print("Successfully selected file: \(fileName)")
+        }
       } catch {
         print("Error copying file: \(error.localizedDescription)")
         url.stopAccessingSecurityScopedResource()
