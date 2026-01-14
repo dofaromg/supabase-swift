@@ -42,5 +42,35 @@
     <string>fbapi</string>
     <string>fb-messenger-share-api</string>
   </array>
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key>
+      <string>All Files</string>
+      <key>LSHandlerRank</key>
+      <string>Alternate</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>public.item</string>
+        <string>public.content</string>
+        <string>public.data</string>
+        <string>public.archive</string>
+        <string>public.zip-archive</string>
+      </array>
+    </dict>
+  </array>
+  <key>UTImportedTypeDeclarations</key>
+  <array>
+    <dict>
+      <key>UTTypeIdentifier</key>
+      <string>public.item</string>
+      <key>UTTypeConformsTo</key>
+      <array>
+        <string>public.data</string>
+      </array>
+      <key>UTTypeDescription</key>
+      <string>All File Types</string>
+    </dict>
+  </array>
 </dict>
 </plist>
