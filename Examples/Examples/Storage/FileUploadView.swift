@@ -296,6 +296,8 @@ struct DocumentPicker: UIViewControllerRepresentable {
   func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.delegate = context.coordinator
+    picker.allowsMultipleSelection = false
+    picker.shouldShowFileExtensions = true
     return picker
   }
 
@@ -319,7 +321,52 @@ struct DocumentPicker: UIViewControllerRepresentable {
       didPickDocumentsAt urls: [URL]
     ) {
       guard let url = urls.first else { return }
-      parent.selectedURL = url
+
+      // Ensure security-scoped resource access
+      guard url.startAccessingSecurityScopedResource() else {
+        print("Unable to access security-scoped resource for file")
+        parent.selectedURL = nil
+        return
+      }
+
+      // Copy file to app's temporary directory
+      do {
+        let fileName = url.lastPathComponent
+        let tempDirectory = FileManager.default.temporaryDirectory
+        let tempURL = tempDirectory.appendingPathComponent(fileName)
+
+        // Remove file if it already exists
+        if FileManager.default.fileExists(atPath: tempURL.path) {
+          try FileManager.default.removeItem(at: tempURL)
+        }
+
+        // Copy file
+        try FileManager.default.copyItem(at: url, to: tempURL)
+
+        // Stop accessing security-scoped resource
+        url.stopAccessingSecurityScopedResource()
+
+        // Use the copied file URL
+        parent.selectedURL = tempURL
+
+        // Log file selection with size info
+        if let fileSize = try? tempURL.fileSize() {
+          print("Successfully selected file: \(fileName), size: \(fileSize) bytes")
+        } else {
+          print("Successfully selected file: \(fileName)")
+        }
+      } catch {
+        print("Error copying file: \(error.localizedDescription)")
+        url.stopAccessingSecurityScopedResource()
+        parent.selectedURL = nil
+      }
     }
+  }
+}
+
+extension URL {
+  func fileSize() throws -> Int64 {
+    let attributes = try FileManager.default.attributesOfItem(atPath: path)
+    return attributes[.size] as? Int64 ?? 0
   }
 }
